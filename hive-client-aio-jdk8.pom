@@ -1,0 +1,175 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.obdp</groupId>
+    <artifactId>hive-client</artifactId>
+    <properties>
+        <maven-compiler-target.version>1.8</maven-compiler-target.version>
+        <jar-name>${project.artifactId}-${hive.version}-hdfs-${hadoop.version}-aio</jar-name>
+    </properties>
+    <version>${hive.version}</version>
+    <packaging>jar</packaging>
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/OpenBigDataPlatform/hive-jdbc-all-in-one</url>
+        </repository>
+    </distributionManagement>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.hive</groupId>
+            <artifactId>hive-metastore</artifactId>
+            <version>${hive.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.hive</groupId>
+            <artifactId>hive-service</artifactId>
+            <version>${hive.version}</version>
+        </dependency>
+
+        <!-- runtime Hive -->
+        <dependency>
+            <groupId>org.apache.hive</groupId>
+            <artifactId>hive-common</artifactId>
+            <version>${hive.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.hive</groupId>
+            <artifactId>hive-beeline</artifactId>
+            <version>${hive.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.hive</groupId>
+            <artifactId>hive-jdbc</artifactId>
+            <version>${hive.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.hive</groupId>
+            <artifactId>hive-shims</artifactId>
+            <version>${hive.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.hive</groupId>
+            <artifactId>hive-serde</artifactId>
+            <version>${hive.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.hive</groupId>
+            <artifactId>hive-contrib</artifactId>
+            <version>${hive.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.hive</groupId>
+            <artifactId>hive-exec</artifactId>
+            <version>${hive.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-mapreduce-client-core</artifactId>
+            <version>${hadoop.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${maven-compiler-target.version}</source>
+                    <target>>${maven-compiler-target.version}</target>
+                    <verbose>true</verbose>
+                    <fork>true</fork>
+                    <compilerVersion>1.8</compilerVersion>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>3.0.0-M3</version>
+                <executions>
+                  <execution>
+                    <id>enforce-java</id>
+                    <phase>validate</phase> 
+                    <goals>
+                      <goal>enforce</goal>
+                    </goals>
+                    <configuration>
+                      <failFast>true</failFast>
+                      <rules>
+                        <requireJavaVersion>
+                          <version>[1.8,1.9)</version> <!-- greater than or equal to 1.8, less than 1.9 -->
+                        </requireJavaVersion>
+                      </rules>    
+                    </configuration>
+                  </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.1.1</version>
+
+                <configuration>
+                    <finalName>${jar-name}</finalName>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <appendAssemblyId>false</appendAssemblyId>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
+                <executions>
+                    <execution>
+                        <id>default-jar</id>
+                        <phase>none</phase> <!-- DO NOT BUILD THE DEFAULT JAR -->
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- skip <deploy> if package already exists -->
+            <plugin>
+                <groupId>org.honton.chas</groupId>
+                <artifactId>exists-maven-plugin</artifactId>
+                <version>0.3.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>remote</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
