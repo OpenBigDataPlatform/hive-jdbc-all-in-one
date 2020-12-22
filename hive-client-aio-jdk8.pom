@@ -6,7 +6,7 @@
         <maven-compiler-target.version>1.8</maven-compiler-target.version>
         <jar-name>${project.artifactId}-${hive.version}-hdfs-${hadoop.version}-aio</jar-name>
     </properties>
-    <version>${hive.version}</version>
+    <version>${jar-name}</version>
     <packaging>jar</packaging>
     <distributionManagement>
         <repository>

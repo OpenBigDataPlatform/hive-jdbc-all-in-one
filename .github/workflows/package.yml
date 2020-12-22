@@ -5,7 +5,7 @@ on:
     types: [created]
 
 jobs:
-  build:
+  build_package_deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,10 +22,6 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
       - name: Release hive-3.1.1-hadoop-3.1.1
         run: mvn deploy --batch-mode --update-snapshots -f "hive-client-aio-jdk8.pom" "-Dhive.version=3.1.1" "-Dhadoop.version=3.1.1"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Release hive-2.3.7-hadoop-2.9.1
-        run: mvn deploy --batch-mode --update-snapshots -f "hive-client-aio-jdk8.pom" "-Dhive.version=2.3.7" "-Dhadoop.version=2.9.1"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Release hive-2.3.7-hadoop-2.9.1
