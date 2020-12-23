@@ -13,10 +13,12 @@ We make NO code changes within the packaged jar file.
   **latest in `3.x`**
 - [hive-client-2.3.7-hdfs-2.9.1-aio.jar](https://github.com/OpenBigDataPlatform/hive-jdbc-all-in-one/packages/549502?version=hive-client-2.3.7-hdfs-2.9.1-aio) 
   **latest in `2.x`**
+- [hive-client-2.1.1-hdfs-3.0.3.jar]()
+  **cdh `6.x` compatible**
 - [hive-client-2.3.4-hdfs-2.7.7-aio.jar](https://github.com/OpenBigDataPlatform/hive-jdbc-all-in-one/packages/549502?version=hive-client-2.3.4-hdfs-2.7.7-aio) 
   **2018, `2.x` release**
 - [hive-client-1.2.2-hdfs-2.6.5-aio.jar](https://github.com/OpenBigDataPlatform/hive-jdbc-all-in-one/packages/549502?version=hive-client-1.2.2-hdfs-2.6.5-aio)
-  **cdh `6.x` compatible**
+  **last `1.x` release**
 - [hive-client-1.1.0-hdfs-2.6.5-aio.jar](https://github.com/OpenBigDataPlatform/hive-jdbc-all-in-one/packages/549502?version=hive-client-1.1.0-hdfs-2.6.5-aio) 
   **cdh `5.4` to `5.16` compatible**
 
