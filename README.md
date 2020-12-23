@@ -4,19 +4,23 @@ The `hive client` provided by the **Apache Hive** does not include all required 
 This small project provides `uber jars` or `all-in-one` jars for ease of use.  
 We make NO code changes within the packaged jar file.
 
-# Releases
-Below are the available builds, all builds are built with `JDK 8`, and target `java 1.8`  
-Note that technically any **hive** `2.x` series driver should work with `hive 2`  
-We have generally found it is best to ue a driver that is *near* your version of **Hive** and **Hadoop**.
+## [All Releases](https://github.com/OpenBigDataPlatform/hive-jdbc-all-in-one/packages/549502/versions)
 
-- `3.1.1, hadoop 3.1.1` *latest in 3.x*
-- `2.3.7, hadoop 2.9.1` *latest in 2.x*
-- `2.3.4, hadoop 2.7.7` *2018, 2.x release*
-- `2.1.1, hadoop 3.0.3` *cdh 6.x compatible*
-- `1.2.2, hadoop 2.6.5` *last 1.x release*
-- `1.1.0, hadoop 2.6.5` *cdh 5.4 to 5.16 compatible*
+ Click one of the links below to be taken to the release package.  
+ On the right side of the github page you'll see a link to download the `jar` for a given release.
 
-#Components
+- [hive-client-3.1.1-hdfs-3.1.1-aio.jar](https://github.com/OpenBigDataPlatform/hive-jdbc-all-in-one/packages/549502?version=hive-client-3.1.1-hdfs-3.1.1-aio)
+  **latest in `3.x`**
+- [hive-client-2.3.7-hdfs-2.9.1-aio.jar](https://github.com/OpenBigDataPlatform/hive-jdbc-all-in-one/packages/549502?version=hive-client-2.3.7-hdfs-2.9.1-aio) 
+  **latest in `2.x`**
+- [hive-client-2.3.4-hdfs-2.7.7-aio.jar](https://github.com/OpenBigDataPlatform/hive-jdbc-all-in-one/packages/549502?version=hive-client-2.3.4-hdfs-2.7.7-aio) 
+  **2018, `2.x` release**
+- [hive-client-1.2.2-hdfs-2.6.5-aio.jar](https://github.com/OpenBigDataPlatform/hive-jdbc-all-in-one/packages/549502?version=hive-client-1.2.2-hdfs-2.6.5-aio)
+  **cdh `6.x` compatible**
+- [hive-client-1.1.0-hdfs-2.6.5-aio.jar](https://github.com/OpenBigDataPlatform/hive-jdbc-all-in-one/packages/549502?version=hive-client-1.1.0-hdfs-2.6.5-aio) 
+  **cdh `5.4` to `5.16` compatible**
+
+## Components
 The required components for an `all-in-one` **JDBC Driver** WITH `kerberos` support are:
 - `hive-metastore*.jar`
 - `hive-service*.jar`
@@ -30,7 +34,7 @@ The required components for an `all-in-one` **JDBC Driver** WITH `kerberos` supp
 - `hadoop-mapreduce-client-core*.jar`
 
 
-# Build
+## Build
 
 You can build all the packaged versions using the `build.sh` script provided:
 ```
@@ -44,7 +48,7 @@ You can build a custom version by passing `hive` and `hadoop` versions:
 *Note:* `jdk 1.8` is required to build `hadoop`, and `hive` dependencies.
 You must specify the path to a **JDK 1.8** `javac` compiler via `-Dmaven.compiler.executable`
 
-## Errors:
+### Errors:
 - If you get this error it means that you are running maven with JVM > 1.8.
   `jdk.tools` is no longer provided as of `jdk 1.9`.
 
@@ -52,19 +56,3 @@ You must specify the path to a **JDK 1.8** `javac` compiler via `-Dmaven.compile
 
 - `[WARNING] Cannot include project artifact: org.obdp:hive-client:jar:2.3.7; it doesn't have an associated file or directory`  
   This is normal - we don't need to build the default jar so we skip it.
-
-# JDK
-As of this writing building `Hadoop 3.x` and `Hive 2.x` requires `jdk 1.8`.
-
-## Controlling which JDK is default
-The following command will list the installed JDK's and allow you to choose which one should be default
-```bash
-sudo update-alternatives --config java
-```
-
-## Install
-To install JDK 1.8 on ubuntu/debian:
-```bash
-sudo apt-get install openjdk-8-jdk
-```
-
