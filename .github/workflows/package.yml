@@ -7,6 +7,8 @@ on:
 jobs:
   build_package_deploy:
     runs-on: ubuntu-latest
+    env:
+      jar_version: hive-client-1.1.0-hdfs-2.6.5
 
     steps:
       - uses: actions/checkout@v1
@@ -20,49 +22,26 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-
-      # oldest to newest
-      - name: Release hive-1.1.0-hadoop-2.6.5
-        run: mvn deploy --batch-mode --update-snapshots -f "hive-client-aio-jdk8.pom" "-Dhive.version=1.1.0" "-Dhadoop.version=2.6.5"
+      - name: Get current release
+        id: get_release
+        uses: bruceadams/get-release@v1.2.2
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+      # -----------------------------------------------
+      # build hive uber jar with maven
+      - name: Build hive-client
+        run: mvn package --batch-mode --update-snapshots -f "${{env.jar_version}}.pom"
         continue-on-error: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-
-      - name: Release hive-1.2.2-hadoop-2.6.5
-        run: mvn deploy --batch-mode --update-snapshots -f "hive-client-aio-jdk8.pom" "-Dhive.version=1.2.2" "-Dhadoop.version=2.6.5"
-        continue-on-error: true
+      # -----------------------------------------------
+      # use special action to attach jar to release - this will be available through the "releases" downloads
+      - name: Attach jar to release
+        uses: actions/upload-release-asset@v1.0.2
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Release hive-2.1.1-hadoop-3.0.3
-        run: mvn deploy --batch-mode --update-snapshots -f "hive-client-aio-jdk8.pom" "-Dhive.version=2.1.1" "-Dhadoop.version=3.0.3"
-        continue-on-error: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}'
-
-      - name: Release hive-2.3.4-hadoop-2.7.7
-        run: mvn deploy --batch-mode --update-snapshots -f "hive-client-aio-jdk8.pom" "-Dhive.version=2.3.4" "-Dhadoop.version=2.7.7"
-        continue-on-error: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Release hive-2.3.7-hadoop-2.9.1
-        run: mvn deploy --batch-mode --update-snapshots -f "hive-client-aio-jdk8.pom" "-Dhive.version=2.3.7" "-Dhadoop.version=2.9.1"
-        continue-on-error: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Release hive-3.1.1-hadoop-3.1.1
-        run: mvn deploy --batch-mode --update-snapshots -f "hive-client-aio-jdk8.pom" "-Dhive.version=3.1.1" "-Dhadoop.version=3.1.1"
-        continue-on-error: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # do not bundle as artifacts.
-      #- name: Bundle artifacts
-      #  run: mkdir staging && cp target/*.jar staging
-      #- uses: actions/upload-artifact@v2
-      #  with:
-      #    name: Package
-      #    path: staging
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.get_release.outputs.upload_url }}
+          asset_path: ./target/${{env.jar_version}}-aio.jar
+          asset_name: ${{env.jar_version}}-aio.jar
+          asset_content_type: application/octet-stream

@@ -3,18 +3,13 @@
     <groupId>org.obdp</groupId>
     <artifactId>hive-client</artifactId>
     <properties>
+        <hive.version>1.2.2</hive.version>
+        <hadoop.version>2.6.5</hadoop.version>
         <maven-compiler-target.version>1.8</maven-compiler-target.version>
         <jar-name>${project.artifactId}-${hive.version}-hdfs-${hadoop.version}-aio</jar-name>
     </properties>
-    <version>${jar-name}</version>
+    <version>${hive.version}-hdfs-${hadoop.version}</version>
     <packaging>jar</packaging>
-    <distributionManagement>
-        <repository>
-            <id>github</id>
-            <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/OpenBigDataPlatform/hive-jdbc-all-in-one</url>
-        </repository>
-    </distributionManagement>
     <dependencies>
         <dependency>
             <groupId>org.apache.hive</groupId>
@@ -63,21 +58,21 @@
             <version>${hive.version}</version>
             <scope>runtime</scope>
         </dependency>
-        
+
         <dependency>
             <groupId>org.apache.hive</groupId>
             <artifactId>hive-contrib</artifactId>
             <version>${hive.version}</version>
             <scope>runtime</scope>
         </dependency>
-        
+
         <dependency>
             <groupId>org.apache.hive</groupId>
             <artifactId>hive-exec</artifactId>
             <version>${hive.version}</version>
             <scope>runtime</scope>
         </dependency>
-        
+
         <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-mapreduce-client-core</artifactId>
@@ -105,21 +100,21 @@
                 <artifactId>maven-enforcer-plugin</artifactId>
                 <version>3.0.0-M3</version>
                 <executions>
-                  <execution>
-                    <id>enforce-java</id>
-                    <phase>validate</phase> 
-                    <goals>
-                      <goal>enforce</goal>
-                    </goals>
-                    <configuration>
-                      <failFast>true</failFast>
-                      <rules>
-                        <requireJavaVersion>
-                          <version>[1.8,1.9)</version> <!-- greater than or equal to 1.8, less than 1.9 -->
-                        </requireJavaVersion>
-                      </rules>    
-                    </configuration>
-                  </execution>
+                    <execution>
+                        <id>enforce-java</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <failFast>true</failFast>
+                            <rules>
+                                <requireJavaVersion>
+                                    <version>[1.8,1.9)</version> <!-- greater than or equal to 1.8, less than 1.9 -->
+                                </requireJavaVersion>
+                            </rules>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
 
