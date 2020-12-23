@@ -1,5 +1,5 @@
 # Hive Client
-The `hive client` provided by the **Apache Hive** does not include all required libraries to connet to hive.
+The `hive client` provided by the **Apache Hive** does not include all required libraries to connect to hive.
 
 This small project provides `uber jars` or `all-in-one` jars for ease of use.  
 We make NO code changes within the packaged jar file.
@@ -36,18 +36,13 @@ The required components for an `all-in-one` **JDBC Driver** WITH `kerberos` supp
 
 
 ## Build
-
-You can build all the packaged versions using the `build.sh` script provided:
-```
-bash build.sh
-```
-
-You can build a custom version by passing `hive` and `hadoop` versions:
-```bash
- mvn package -f "hive-client-aio-jre8.pom" "-Dhive.version=3.1.1" "-Dhadoop.version=3.1.1" "-Dmaven.compiler.executable=/usr/lib/jvm/java-8-openjdk-amd64/bin/javac"
-```
 *Note:* `jdk 1.8` is required to build `hadoop`, and `hive` dependencies.
-You must specify the path to a **JDK 1.8** `javac` compiler via `-Dmaven.compiler.executable`
+You must specify the path to a **JDK 1.8** `javac` compiler via `-Dmaven.compiler.executable` if `jdk 1.8` is not your default.
+
+To build one of the provided `pom` files
+```bash
+mvn package -f hive-client-3.1.1-hdfs-3.1.1.pom
+```
 
 ### Errors:
 - If you get this error it means that you are running maven with JVM > 1.8.
