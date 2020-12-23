@@ -1,5 +1,5 @@
 # Hive Client
-The `hive client` provided by the **Apache Hive** does not include all required libraries to connect to hive.
+The `hive client` provided by the **Apache Hive** project does not include all required libraries to connect to hive.
 
 This small project provides `uber jars` or `all-in-one` jars for ease of use.  
 We make NO code changes within the packaged jar file.
