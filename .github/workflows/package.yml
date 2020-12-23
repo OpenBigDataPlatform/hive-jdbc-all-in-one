@@ -8,7 +8,7 @@ jobs:
   build_package_deploy:
     runs-on: ubuntu-latest
     env:
-      jar_version: hive-client-1.2.2-hdfs-2.6.5
+      jar_version: hive-client-2.1.1-hdfs-3.0.3
 
     steps:
       - uses: actions/checkout@v1
