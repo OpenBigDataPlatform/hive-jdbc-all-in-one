@@ -31,7 +31,6 @@ jobs:
       # build hive uber jar with maven
       - name: Build hive-client
         run: mvn package --batch-mode --update-snapshots -f "${{env.jar_version}}.pom"
-        continue-on-error: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # -----------------------------------------------
