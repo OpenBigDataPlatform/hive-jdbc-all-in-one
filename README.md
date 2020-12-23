@@ -4,22 +4,21 @@ The `hive client` provided by the **Apache Hive** does not include all required 
 This small project provides `uber jars` or `all-in-one` jars for ease of use.  
 We make NO code changes within the packaged jar file.
 
-## [All Releases](https://github.com/OpenBigDataPlatform/hive-jdbc-all-in-one/packages/549596/versions)
+## [All Releases](https://github.com/OpenBigDataPlatform/hive-jdbc-all-in-one/releases)
 
- Click one of the links below to be taken to the release package.  
- On the right side of the github page you'll see a link to download the `jar` for a given release.
+ Use the links below to download `hive-client` `all-in-one jar`
 
-- [hive-client-3.1.1-hdfs-3.1.1-aio.jar](https://github.com/OpenBigDataPlatform/hive-jdbc-all-in-one/packages/549596?version=hive-client-3.1.1-hdfs-3.1.1-aio)
+- [hive-client-3.1.1-hdfs-3.1.1-aio.jar](https://github.com/OpenBigDataPlatform/hive-jdbc-all-in-one/releases/download/hive-client-3.1.1-hdfs-3.1.1/hive-client-3.1.1-hdfs-3.1.1-aio.jar)
   **latest in `3.x`**
-- [hive-client-2.1.1-hdfs-3.0.3-aio.jar](https://github.com/OpenBigDataPlatform/hive-jdbc-all-in-one/packages/549596?version=hive-client-2.1.1-hdfs-3.0.3-aio)
-  **cdh `6.x` compatible**
-- [hive-client-2.3.7-hdfs-2.9.1-aio.jar](https://github.com/OpenBigDataPlatform/hive-jdbc-all-in-one/packages/549596?version=hive-client-2.3.7-hdfs-2.9.1-aio) 
+- [hive-client-2.3.7-hdfs-2.9.1-aio.jar](https://github.com/OpenBigDataPlatform/hive-jdbc-all-in-one/releases/download/hive-client-2.3.7-hdfs-2.9.1/hive-client-2.3.7-hdfs-2.9.1-aio.jar)
   **latest in `2.x`**
-- [hive-client-2.3.4-hdfs-2.7.7-aio.jar](https://github.com/OpenBigDataPlatform/hive-jdbc-all-in-one/packages/549596?version=hive-client-2.3.4-hdfs-2.7.7-aio) 
-  **2018, `2.x` release**
-- [hive-client-1.2.2-hdfs-2.6.5-aio.jar](https://github.com/OpenBigDataPlatform/hive-jdbc-all-in-one/packages/549596?version=hive-client-1.2.2-hdfs-2.6.5-aio)
+- [hive-client-2.3.4-hdfs-2.7.7-aio.jar](https://github.com/OpenBigDataPlatform/hive-jdbc-all-in-one/releases/download/hive-client-2.3.4-hdfs-2.7.7/hive-client-2.3.4-hdfs-2.7.7-aio.jar) 
+  **2018, `2.x` release*
+- [hive-client-2.1.1-hdfs-3.0.3-aio.jar](https://github.com/OpenBigDataPlatform/hive-jdbc-all-in-one/releases/download/hive-client-2.1.1-hdfs-3.0.3/hive-client-2.1.1-hdfs-3.0.3-aio.jar)
+  **cdh `6.x` compatible**
+- [hive-client-1.2.2-hdfs-2.6.5-aio.jar](https://github.com/OpenBigDataPlatform/hive-jdbc-all-in-one/releases/download/hive-client-1.2.2-hdfs-2.6.5/hive-client-1.2.2-hdfs-2.6.5-aio.jar)
   **last `1.x` release**
-- [hive-client-1.1.0-hdfs-2.6.5-aio.jar](https://github.com/OpenBigDataPlatform/hive-jdbc-all-in-one/packages/549596?version=hive-client-1.1.0-hdfs-2.6.5-aio)
+- [hive-client-1.1.0-hdfs-2.6.5-aio.jar](https://github.com/OpenBigDataPlatform/hive-jdbc-all-in-one/releases/download/hive-client-1.1.0-hdfs-2.6.5/hive-client-1.1.0-hdfs-2.6.5-aio.jar)
   **cdh `5.4` to `5.16` compatible**
 
 ## Components
