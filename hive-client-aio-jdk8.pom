@@ -157,19 +157,6 @@
                 </executions>
             </plugin>
 
-            <!-- skip <deploy> if package already exists -->
-            <plugin>
-                <groupId>org.honton.chas</groupId>
-                <artifactId>exists-maven-plugin</artifactId>
-                <version>0.3.0</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>remote</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 </project>

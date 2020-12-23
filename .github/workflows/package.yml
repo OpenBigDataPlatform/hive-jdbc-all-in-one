@@ -59,9 +59,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Bundle artifacts
-        run: mkdir staging && cp target/*.jar staging
-      - uses: actions/upload-artifact@v2
-        with:
-          name: Package
-          path: staging
+      # do not bundle as artifacts.
+      #- name: Bundle artifacts
+      #  run: mkdir staging && cp target/*.jar staging
+      #- uses: actions/upload-artifact@v2
+      #  with:
+      #    name: Package
+      #    path: staging
